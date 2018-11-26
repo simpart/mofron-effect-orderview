@@ -42,7 +42,7 @@ mf.effect.OrderView = class extends mf.Effect {
             for (let cidx in chd) {
                 setTimeout(
                     tocb,
-                    this.timeDiff() * (parseInt(cidx) + 1),
+                    this.interval() * (parseInt(cidx) + 1),
                     chd[cidx]
                 );
             }
@@ -70,7 +70,7 @@ mf.effect.OrderView = class extends mf.Effect {
             for (let cidx in chd) {
                 setTimeout(
                     tocb,
-                    this.timeDiff() * (parseInt(cidx) + 1),
+                    this.interval() * (parseInt(cidx) + 1),
                     chd[cidx]
                 );
             }
@@ -81,15 +81,15 @@ mf.effect.OrderView = class extends mf.Effect {
     }
     
     /**
-     * time diff setter/getter
+     * interval time setter/getter
      * default time diff is 100 ms
      *
-     * @param p1 (number) order time diff (ms)
+     * @param p1 (number) order interval time (ms)
      * @param p1 (undefined) call as getter
-     * @return (number) order time diff (ms)
+     * @return (number) order interval time (ms)
      */
-    timeDiff (prm) {
-        try { return this.member('timeDiff', 'number', prm, 100); } catch (e) {
+    interval (prm) {
+        try { return this.member('interval', 'number', prm, 100); } catch (e) {
             console.error(e.stack);
             throw e;
         }
