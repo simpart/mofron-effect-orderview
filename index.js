@@ -84,12 +84,41 @@ mf.effect.OrderView = class extends mf.Effect {
      * interval time setter/getter
      * default time diff is 100 ms
      *
-     * @param p1 (number) order interval time (ms)
+     * @param p1 (number) enable order interval time of (ms)
      * @param p1 (undefined) call as getter
-     * @return (number) order interval time (ms)
+     * @return (array) order interval time [enable, disable]
      */
-    interval (prm) {
-        try { return this.member('interval', 'number', prm, 100); } catch (e) {
+    interval (prm, dis) {
+        try {
+            //return this.member('interval', 'number', prm, 100);
+            if (undefined === prm) {
+                /* getter */
+                return (undefined === this.m_intvl) ? [100, 100] : this.m_intvl;
+            }
+            /* setter */
+            if (undefined === this.m_intvl) {
+                this.m_intvl = [false, false];
+            }
+            if (true === Array.isArray(prm)) {
+                if ( ('number' !== typeof prm[0]) ||
+                     ('number' !== typeof prm[1]) ) {
+                    throw new Error('invalid parameter');
+                }
+                this.m_intvl = [prm[0], prm[1]];
+                return;
+            }
+            
+            if ( ('number' === typeof prm) && (undefined === dis) ) {
+                this.m_intvl = [prm, prm];
+            } else {
+                if ('number' === typeof prm) {
+                    this.m_intvl[0] = prm;
+                }
+                if ('number' === typeof dis) {
+                    this.m_intvl[1] = dis;
+                }
+            }
+        } catch (e) {
             console.error(e.stack);
             throw e;
         }
