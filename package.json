@@ -1,6 +1,6 @@
 {
   "name": "mofron-effect-orderview",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "order view component effect",
   "main": "index.js",
   "scripts": {

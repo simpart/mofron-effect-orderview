@@ -16,7 +16,7 @@ mf.effect.OrderView = class extends mf.Effect {
         try {
             super();
             this.name('OrderView');
-            this.prmMap(['timeDiff']);
+            this.prmMap(['interval']);
             this.prmOpt(po);
         } catch (e) {
             console.error(e.stack);
@@ -33,7 +33,9 @@ mf.effect.OrderView = class extends mf.Effect {
         try {
             let chd  = tgt.child();
             let tocb = (p1) => {
-                try { p1.visible(true); } catch (e) {
+                try {
+console.log(p1);
+ p1.visible(true); } catch (e) {
                     console.error(e.stack);
                     throw e;
                 }
@@ -42,7 +44,7 @@ mf.effect.OrderView = class extends mf.Effect {
             for (let cidx in chd) {
                 setTimeout(
                     tocb,
-                    this.interval() * (parseInt(cidx) + 1),
+                    this.interval()[0] * (parseInt(cidx) + 1),
                     chd[cidx]
                 );
             }
@@ -70,7 +72,7 @@ mf.effect.OrderView = class extends mf.Effect {
             for (let cidx in chd) {
                 setTimeout(
                     tocb,
-                    this.interval() * (parseInt(cidx) + 1),
+                    this.interval()[1] * (parseInt(cidx) + 1),
                     chd[cidx]
                 );
             }
