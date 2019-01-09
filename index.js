@@ -33,9 +33,7 @@ mf.effect.OrderView = class extends mf.Effect {
         try {
             let chd  = tgt.child();
             let tocb = (p1) => {
-                try {
-console.log(p1);
- p1.visible(true); } catch (e) {
+                try { p1.visible(true); } catch (e) {
                     console.error(e.stack);
                     throw e;
                 }
